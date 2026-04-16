@@ -1,23 +1,15 @@
 from functools import lru_cache
-
-from pydantic import Field
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pathlib import Path
 
 
-class Settings(BaseSettings):
+class Settings:
     app_name: str = "Auto SAS Analytics API"
-    app_env: str = Field(default="development")
-    debug: bool = Field(default=True)
-
-    database_url: str = Field(default="sqlite:///./apps/api/local.db")
-    storage_root: str = Field(default="storage")
-
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-        case_sensitive=False,
-        extra="ignore",
-    )
+    debug: bool = True
+    database_url: str = "sqlite:///./storage/app.db"
+    storage_root: str = str(Path(__file__).resolve().parents[2] / "storage")
+    frontend_origin: str = "http://127.0.0.1:3000"
+    sas_command: str = "sas"
+    sas_run_timeout_seconds: int = 60
 
 
 @lru_cache
