@@ -1,0 +1,11 @@
+INFO:     Will watch for changes in these directories: ['/Users/xixi/auto-sas-analytics/apps/api']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [7809] using WatchFiles
+INFO:     Started server process [7811]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:59367 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59369 - "POST /api/uploads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59378 - "POST /api/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59381 - "POST /api/tasks/e285c7d7-49c2-4331-bf22-3814c8bbf0c8/run HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59383 - "GET /api/tasks/e285c7d7-49c2-4331-bf22-3814c8bbf0c8 HTTP/1.1" 200 OK
