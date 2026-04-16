@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.pyc
+
+# Local env
+.env
+.env.local
+
+# Runtime artifacts
+apps/api/storage/
+apps/api/.pytest_cache/
+apps/api/.venv/
+
+# Node
+apps/web/node_modules/
+apps/web/.next/
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Env files
+.env
+.env.local
+
+# Runtime artifacts
+apps/api/storage/
+
+# Next / Node
+apps/web/node_modules/
+apps/web/.next/
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Env files
+.env
+.env.local
+
+# Runtime artifacts
+apps/api/storage/
+
+# Next / Node
+apps/web/node_modules/
+apps/web/.next/

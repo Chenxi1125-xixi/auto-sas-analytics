@@ -3,6 +3,7 @@ from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from app.core.config import get_settings
 from app.db.init_db import create_tables
@@ -14,9 +15,10 @@ from app.routes.templates import router as templates_router
 from app.routes.uploads import router as uploads_router
 
 settings = get_settings()
-Path(settings.storage_root).mkdir(parents=True, exist_ok=True)
-Path(settings.storage_root, "uploads").mkdir(parents=True, exist_ok=True)
-Path(settings.storage_root, "results").mkdir(parents=True, exist_ok=True)
+storage_root = Path(settings.storage_root)
+storage_root.mkdir(parents=True, exist_ok=True)
+(storage_root / "uploads").mkdir(parents=True, exist_ok=True)
+(storage_root / "results").mkdir(parents=True, exist_ok=True)
 
 
 @asynccontextmanager
@@ -31,6 +33,7 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(title=settings.app_name, debug=settings.debug, lifespan=lifespan)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[settings.frontend_origin],
@@ -38,6 +41,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.mount("/storage", StaticFiles(directory=str(storage_root)), name="storage")
 
 app.include_router(health_router)
 app.include_router(templates_router)
