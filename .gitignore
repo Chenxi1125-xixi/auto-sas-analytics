@@ -46,3 +46,7 @@ apps/api/storage/
 # Next / Node
 apps/web/node_modules/
 apps/web/.next/
+
+.DS_Store
+__pycache__/
+*.pyc
